@@ -21,9 +21,17 @@ def test_parse_reconstruction_stats():
     stats = parse_reconstruction_stats(SAMPLE_LOG)
 
     assert stats["num_input_images"] == 104
+    assert stats["num_images"] == 27
     assert stats["num_reg_images"] == 27
     assert stats["num_points3D"] == 2432
     assert stats["mean_reprojection_error"] == 1.25835
+
+
+def test_parse_reconstruction_stats_does_not_confuse_num_images_with_num_input_images():
+    stats = parse_reconstruction_stats("num_input_images = 104\n")
+
+    assert "num_input_images" in stats
+    assert "num_images" not in stats
 
 
 def test_save_stats_markdown(tmp_path: Path):
