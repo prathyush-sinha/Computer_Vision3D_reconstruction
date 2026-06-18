@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import shutil
+from pathlib import Path
 
 from src.config import build_config
 from src.extract_features import extract_local_features, list_images
@@ -21,6 +22,19 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def refuse_dangerous_clean_path(path: Path) -> None:
+    """Refuse cleanup targets that are filesystem roots or home directories."""
+
+    resolved = path.expanduser().resolve()
+    home = Path.home().resolve()
+
+    if resolved == resolved.anchor or resolved == home:
+        raise ValueError(f"Refusing to delete unsafe output path: {resolved}")
+
+    if len(resolved.parts) <= 2:
+        raise ValueError(f"Refusing to delete broad output path: {resolved}")
+
+
 def main() -> None:
     args = parse_args()
     config = build_config(
@@ -31,6 +45,7 @@ def main() -> None:
     )
 
     if args.clean and config.outputs.exists():
+        refuse_dangerous_clean_path(config.outputs)
         shutil.rmtree(config.outputs)
 
     config.outputs.mkdir(parents=True, exist_ok=True)
