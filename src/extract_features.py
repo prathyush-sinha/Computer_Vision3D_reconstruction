@@ -4,17 +4,16 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from src.config import ReconstructionConfig
+from src.config import ReconstructionConfig, is_image_file
 
 
 def list_images(images: Path) -> list[str]:
     """Return image file names relative to the image directory."""
 
-    suffixes = {".jpg", ".jpeg", ".png", ".tif", ".tiff", ".bmp"}
     return sorted(
         path.relative_to(images).as_posix()
         for path in images.iterdir()
-        if path.suffix.lower() in suffixes
+        if is_image_file(path)
     )
 
 
