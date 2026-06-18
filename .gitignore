@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.ipynb_checkpoints/
+outputs/
+data/
+datasets/
+*.h5
+*.db
+*.ply
+*.log
+.env
