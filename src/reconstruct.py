@@ -9,15 +9,15 @@ from src.config import ReconstructionConfig
 
 
 STATS_PATTERNS = {
-    "num_cameras": r"num_cameras\s*=\s*([0-9.]+)",
-    "num_images": r"num_images\s*=\s*([0-9.]+)",
-    "num_reg_images": r"num_reg_images\s*=\s*([0-9.]+)",
-    "num_points3D": r"num_points3D\s*=\s*([0-9.]+)",
-    "num_observations": r"num_observations\s*=\s*([0-9.]+)",
-    "mean_track_length": r"mean_track_length\s*=\s*([0-9.]+)",
-    "mean_observations_per_image": r"mean_observations_per_image\s*=\s*([0-9.]+)",
-    "mean_reprojection_error": r"mean_reprojection_error\s*=\s*([0-9.]+)",
-    "num_input_images": r"num_input_images\s*=\s*([0-9.]+)",
+    "num_cameras": r"^\s*num_cameras\s*=\s*([0-9.]+)\s*$",
+    "num_images": r"^\s*num_images\s*=\s*([0-9.]+)\s*$",
+    "num_reg_images": r"^\s*num_reg_images\s*=\s*([0-9.]+)\s*$",
+    "num_points3D": r"^\s*num_points3D\s*=\s*([0-9.]+)\s*$",
+    "num_observations": r"^\s*num_observations\s*=\s*([0-9.]+)\s*$",
+    "mean_track_length": r"^\s*mean_track_length\s*=\s*([0-9.]+)\s*$",
+    "mean_observations_per_image": r"^\s*mean_observations_per_image\s*=\s*([0-9.]+)\s*$",
+    "mean_reprojection_error": r"^\s*mean_reprojection_error\s*=\s*([0-9.]+)\s*$",
+    "num_input_images": r"^\s*num_input_images\s*=\s*([0-9.]+)\s*$",
 }
 
 
@@ -45,7 +45,7 @@ def parse_reconstruction_stats(text: str) -> dict[str, float | int]:
 
     stats: dict[str, float | int] = {}
     for key, pattern in STATS_PATTERNS.items():
-        match = re.search(pattern, text)
+        match = re.search(pattern, text, flags=re.MULTILINE)
         if not match:
             continue
 
