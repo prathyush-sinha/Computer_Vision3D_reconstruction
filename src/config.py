@@ -24,6 +24,8 @@ SUPPORTED_MATCHER_CONFIGS = {
     "disk+lightglue",
 }
 
+IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".tif", ".tiff", ".bmp"}
+
 
 @dataclass(frozen=True)
 class ReconstructionConfig:
@@ -55,8 +57,14 @@ class ReconstructionConfig:
         return self.outputs / "database.db"
 
 
+def is_image_file(path: Path) -> bool:
+    """Return True only for real files with image-like suffixes."""
+
+    return path.is_file() and path.suffix.lower() in IMAGE_SUFFIXES
+
+
 def validate_images_path(images: Path) -> None:
-    """Validate that an image directory exists and contains image-like files."""
+    """Validate that an image directory exists and contains image files."""
 
     if not images.exists():
         raise FileNotFoundError(f"Image directory does not exist: {images}")
@@ -64,8 +72,7 @@ def validate_images_path(images: Path) -> None:
     if not images.is_dir():
         raise NotADirectoryError(f"Expected an image directory: {images}")
 
-    image_suffixes = {".jpg", ".jpeg", ".png", ".tif", ".tiff", ".bmp"}
-    if not any(path.suffix.lower() in image_suffixes for path in images.iterdir()):
+    if not any(is_image_file(path) for path in images.iterdir()):
         raise ValueError(f"No image files found in: {images}")
 
 
