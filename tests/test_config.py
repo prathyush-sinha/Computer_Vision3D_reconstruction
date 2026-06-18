@@ -34,6 +34,15 @@ def test_validate_images_path_requires_images(tmp_path: Path):
         validate_images_path(empty_dir)
 
 
+def test_validate_images_path_rejects_directory_with_image_suffix(tmp_path: Path):
+    image_dir = tmp_path / "images"
+    image_dir.mkdir()
+    (image_dir / "fake.jpg").mkdir()
+
+    with pytest.raises(ValueError):
+        validate_images_path(image_dir)
+
+
 def test_validate_images_path_accepts_image_files(tmp_path: Path):
     image_dir = tmp_path / "images"
     image_dir.mkdir()
