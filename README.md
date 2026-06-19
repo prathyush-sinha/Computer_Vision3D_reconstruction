@@ -10,7 +10,7 @@ Given a set of overlapping images of the same object, room, or outdoor scene, re
 
 ## 📌 Results Preview
 ![Dense Reconstruction](https://drive.google.com/uc?export=view&id=1jP_-ZMyfB33-LEJnXRA56LaB-Ebn2Nye)
-![Sparse Reconstruction](https://drive.google.com/file/d/1igI5Q3mEJsU96Ptll1JskXponoOe87zZ)
+![Sparse Reconstruction](https://drive.google.com/uc?export=view&id=1igI5Q3mEJsU96Ptll1JskXponoOe87zZ)
 > **View reconstruction outputs:**
 > This contains the reconstructed sparse point cloud, camera poses, and project output artifacts from the original run.
 > [🔗 Open sparse reconstruction / point-cloud results](https://drive.google.com/file/d/1igI5Q3mEJsU96Ptll1JskXponoOe87zZ/view?usp=drive_link)
