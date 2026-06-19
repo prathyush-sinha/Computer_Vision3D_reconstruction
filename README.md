@@ -11,12 +11,13 @@ Given a set of overlapping images of the same object, room, or outdoor scene, re
 ## 📌 Results Preview
 
 > **View reconstruction outputs:**
+> This contains the reconstructed sparse point cloud, camera poses, and project output artifacts from the original run.
 > [🔗 Open sparse reconstruction / point-cloud results](https://drive.google.com/file/d/1igI5Q3mEJsU96Ptll1JskXponoOe87zZ/view?usp=drive_link)
+> This contains the reconstructed sparse point cloud, camera poses, and project output artifacts from the original run.
 > [🔗 Open dense reconstruction / NVIDIA Instant NeRF (Instant-NGP) results](https://drive.google.com/file/d/1jP_-ZMyfB33-LEJnXRA56LaB-Ebn2Nye/view?usp=sharing)
 
-This contains the reconstructed sparse point cloud, camera poses, and project output artifacts from the original run.
 
-This contains the reconstructed sparse point cloud, camera poses, and project output artifacts from the original run.
+
 
 ## Pipeline
 
