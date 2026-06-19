@@ -8,6 +8,16 @@ This repository started as an exploratory notebook and has been refactored into 
 
 Given a set of overlapping images of the same object, room, or outdoor scene, reconstruct the scene geometry by estimating camera poses and triangulating 3D points. The practical goal is to convert unordered multi-view images into a sparse reconstruction that can be inspected, evaluated, and extended toward dense reconstruction or neural rendering.
 
+## 📌 Results Preview
+
+> **View reconstruction outputs:**  
+> [🔗 Open sparse reconstruction / point-cloud results](https://drive.google.com/file/d/1igI5Q3mEJsU96Ptll1JskXponoOe87zZ/view?usp=drive_link)
+> [🔗 Open dense reconstruction / NVIDIA Instant NeRF (Instant-NGP) results](https://drive.google.com/file/d/1jP_-ZMyfB33-LEJnXRA56LaB-Ebn2Nye/view?usp=sharing)
+
+This contains the reconstructed sparse point cloud, camera poses, and project output artifacts from the original run.
+
+This contains the reconstructed sparse point cloud, camera poses, and project output artifacts from the original run.
+
 ## Pipeline
 
 ```mermaid
